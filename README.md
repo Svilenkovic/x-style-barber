@@ -1,27 +1,37 @@
-# X Style Barber Shop
+# X Style Barber Demo PWA Showcase
 
-![Status](https://img.shields.io/badge/status-live-brightgreen) ![Next.js](https://img.shields.io/badge/Next.js-16-black) ![PWA](https://img.shields.io/badge/PWA-ready-blue)
+Javni showcase repozitorijum za X Style Barber demo projekat.
 
-## 🔗 Live: [x.svilenkovic.rs](https://x.svilenkovic.rs)
+> Status: Demo/probna verzija radjena za klijentsku prezentaciju.
+> Klijent se na kraju nije odlucio za finalnu realizaciju sajta.
 
-## Overview
-Premium barber shop website with modern design, cinematic animations, and PWA capabilities. Designed for a luxury grooming experience brand.
+## Scope ovog repozitorijuma
 
-## Tech Stack
-- **Frontend:** Next.js 16 (Static Export), React 19, Tailwind CSS 4
-- **Animations:** GSAP ScrollTrigger, smooth scroll
-- **Typography:** Space Grotesk
-- **Features:** Progressive Web App, offline support
-- **Hosting:** Nginx, Ubuntu 24.04, Let's Encrypt SSL
+Repo je namerno ogranicen i ne sadrzi kompletan izvorni frontend kod.
+Objavljeni su samo bezbedni i reprezentativni artefakti:
 
-## Features
-- ✂️ Services showcase with pricing
-- 📱 PWA — installable on mobile
-- 🎬 Cinematic scroll animations
-- 📍 Location & contact integration
-- 🌙 Dark luxury aesthetic
-- ⚡ Lightning-fast static export
-- 🔄 Smooth scroll experience
+- PWA manifest (`public/manifest.json`)
+- deploy/nginx primer (`nginx/x.svilenkovic.rs.conf`)
+- operativna dokumentacija i deployment smernice
+- formalna demo napomena i licensing info
 
----
-*Developed by [Dimitrije Svilenković](https://svilenkovic.com)*
+## Zasto je ogranicen scope
+
+Cilj je da se prikaze kvalitet inzenjerskog pristupa bez javnog objavljivanja
+kompletnog implementacionog koda koji bi mogao biti kopiran 1:1.
+
+## Live referenca
+
+- Site URL: https://x.svilenkovic.rs
+
+## Dokumentacija
+
+- `NOTICE_DEMO.md` - formalna napomena o demo statusu
+- `docs/ARCHITECTURE.md` - arhitektura i nacin deploy-a
+- `docs/DEPLOYMENT.md` - checklista za static export deploy
+- `ops/demo-notice-snippet.js` - client-side demo notice banner snippet
+
+## Zakljucak
+
+Ovaj projekat ostaje javno dostupan kao portfolio demo showcase,
+a ne kao aktivan komercijalni proizvod.
