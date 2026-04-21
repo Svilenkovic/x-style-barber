@@ -1,37 +1,31 @@
-# X Style Barber Demo PWA Showcase
+# X Style Barber
 
-Javni showcase repozitorijum za X Style Barber demo projekat.
+X Style je Next.js sajt sa 3D animacijama za premium barber brend, sa fokusom na atmosferu, animirani storytelling i moderni UX.
 
-> Status: Demo/probna verzija radjena za klijentsku prezentaciju.
-> Klijent se na kraju nije odlucio za finalnu realizaciju sajta.
+## Tehnologije
 
-## Scope ovog repozitorijuma
+- Next.js (App Router)
+- Tailwind CSS
+- GSAP i Three.js
+- TypeScript
 
-Repo je namerno ogranicen i ne sadrzi kompletan izvorni frontend kod.
-Objavljeni su samo bezbedni i reprezentativni artefakti:
+## Lokalni razvoj
 
-- PWA manifest (`public/manifest.json`)
-- deploy/nginx primer (`nginx/x.svilenkovic.rs.conf`)
-- operativna dokumentacija i deployment smernice
-- formalna demo napomena i licensing info
+```bash
+npm install
+npm run dev
+```
 
-## Zasto je ogranicen scope
+## Build
 
-Cilj je da se prikaze kvalitet inzenjerskog pristupa bez javnog objavljivanja
-kompletnog implementacionog koda koji bi mogao biti kopiran 1:1.
+```bash
+npm run build
+```
 
-## Live referenca
+## Licenca i javna upotreba
 
-- Site URL: https://x.svilenkovic.rs
+Kod je javno dostupan za upotrebu i prilagođavanje.
 
-## Dokumentacija
+Obavezna atribucija:
 
-- `NOTICE_DEMO.md` - formalna napomena o demo statusu
-- `docs/ARCHITECTURE.md` - arhitektura i nacin deploy-a
-- `docs/DEPLOYMENT.md` - checklista za static export deploy
-- `ops/demo-notice-snippet.js` - client-side demo notice banner snippet
-
-## Zakljucak
-
-Ovaj projekat ostaje javno dostupan kao portfolio demo showcase,
-a ne kao aktivan komercijalni proizvod.
+- U footeru mora ostati aktivan link ka https://svilenkovic.com
