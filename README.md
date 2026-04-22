@@ -1,13 +1,21 @@
 # X Style Barber
 
-X Style je Next.js sajt sa 3D animacijama za premium barber brend, sa fokusom na atmosferu, animirani storytelling i moderni UX.
+Next.js 16 projekat za premium barber brend sa 3D vizuelima, animacijama i PWA strukturom.
 
 ## Tehnologije
 
-- Next.js (App Router)
-- Tailwind CSS
-- GSAP i Three.js
-- TypeScript
+- Next.js 16 (App Router)
+- React 19 + TypeScript
+- Tailwind CSS 4
+- GSAP + Three.js (`@react-three/fiber`, `@react-three/drei`)
+
+## Struktura
+
+- `src/app/`: rute i global layout
+- `src/components/`: UI, sekcije, 3D i animacije
+- `src/lib/`: shared helperi
+- `public/`: staticki assets
+- `x.svilenkovic.rs.conf`: produkcioni nginx primer
 
 ## Lokalni razvoj
 
@@ -16,20 +24,21 @@ npm install
 npm run dev
 ```
 
-## Build
+## Build i provera
 
 ```bash
 npm run build
+npm run lint
 ```
-
-## Licenca i javna upotreba
-
-Kod je javno dostupan za upotrebu i prilagođavanje.
-
-Obavezna atribucija:
-
-- U footeru mora ostati aktivan link ka https://svilenkovic.com
 
 ## Live Preview
 
 - https://x.svilenkovic.rs
+
+## Deploy
+
+Projekat koristi `output: "export"`, pa je deploy flow:
+
+1. `npm run build`
+2. Deploy `out/` sadrzaja na produkcioni web root
+3. Provera routing-a i statickih asset-a na produkciji
