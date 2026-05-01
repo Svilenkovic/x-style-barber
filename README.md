@@ -1,6 +1,8 @@
-# X Style Barber
+# VELDR Barber — Portfolio Demo
 
-Next.js 16 project for a premium barber brand, featuring 3D visuals, cinematic motion, and PWA-ready structure.
+Next.js 16 portfolio/demo site za fictional premium barber brand "VELDR BARBER" — koristi se kao showcase: 3D razor model (react-three-fiber), GSAP scroll animacije, Lenis smooth scroll, PWA struktura, cookie consent + privacy/terms.
+
+> Ovo nije aktivan biznis. Sve forme i podaci su demo — sajt ne prima stvarne rezervacije i ne obrađuje plaćanja.
 
 ## Tech Stack
 

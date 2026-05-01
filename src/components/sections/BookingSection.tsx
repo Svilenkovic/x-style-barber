@@ -26,14 +26,15 @@ export default function BookingSection() {
   if (isSubmitted) {
     return (
       <section className="py-32 px-6 relative z-10" id="booking">
-        <div className="max-w-4xl mx-auto text-center glass-card p-12 rounded-[2rem]">
-          <CheckCircle className="w-16 h-16 text-gold-500 mx-auto mb-6 opacity-80" />
-          <h2 className="text-3xl md:text-5xl font-heading mb-4 text-white uppercase tracking-wider">TERMIN ZAKAZAN</h2>
+        <div className="max-w-4xl mx-auto text-center glass-card p-12 rounded-[2rem]" role="status" aria-live="polite">
+          <CheckCircle className="w-16 h-16 text-gold-500 mx-auto mb-6 opacity-80" aria-hidden="true" />
+          <span className="inline-block text-[10px] tracking-[0.3em] uppercase font-bold text-gold-500 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/30 mb-4">Demo · Nije pravo zakazivanje</span>
+          <h2 className="text-3xl md:text-5xl font-heading mb-4 text-white uppercase tracking-wider">DEMO TERMIN PRIKAZAN</h2>
           <p className="text-text-secondary text-lg mb-8 max-w-lg mx-auto font-light leading-relaxed">
-            Vaš termin je uspešno zabeležen za {selectedDate ? format(selectedDate, "dd.MM.yyyy") : ""} u {selectedTime}h. Vidimo se!
+            Ovo je UI prikaz — termin nije zabeležen u stvarnom kalendaru. Datum prikazan: {selectedDate ? format(selectedDate, "dd.MM.yyyy") : ""} u {selectedTime}h.
           </p>
-          <button onClick={() => setIsSubmitted(false)} className="border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-bg-dark transition-all duration-300 px-8 py-4 uppercase font-bold tracking-[0.2em] rounded-full text-sm">
-            ZAKAŽI PONOVO
+          <button onClick={() => setIsSubmitted(false)} className="border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-bg-dark transition-all duration-300 px-8 py-4 uppercase font-bold tracking-[0.2em] rounded-full text-sm focus-visible:ring-2 focus-visible:ring-gold-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark">
+            Probaj Ponovo
           </button>
         </div>
       </section>
@@ -43,12 +44,14 @@ export default function BookingSection() {
   return (
     <section className="py-24 md:py-32 px-4 md:px-8 relative z-10 flex flex-col items-center" id="booking">
       <div className="w-full max-w-7xl glass-card rounded-[2rem] p-6 lg:p-12 relative overflow-hidden">
-        {/* Subtle background glow mimicking Nacionale details */}
+        {/* Subtle background glow */}
         <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-gold-400 opacity-[0.03] blur-[100px] pointer-events-none rounded-full"></div>
         
         <div className="mb-12 md:mb-20 text-center relative z-10">
-          <p className="text-gold-500 uppercase tracking-[0.2em] text-xs font-bold mb-4">Vaše Vreme, Naš Fokus</p>
-          <h2 className="text-4xl md:text-6xl font-heading mb-4 tracking-tighter">ZAKAŽITE TERMIN</h2>
+          <span className="inline-block text-[10px] tracking-[0.3em] uppercase font-bold text-gold-500 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/30 mb-4">Demo Booking UI</span>
+          <p className="text-gold-500 uppercase tracking-[0.2em] text-xs font-bold mb-4">Showcase Forme i Animacije</p>
+          <h2 className="text-4xl md:text-6xl font-heading mb-4 tracking-tighter">DEMO ZAKAZIVANJE</h2>
+          <p className="text-text-secondary text-sm font-light max-w-md mx-auto mt-4">Forma ne šalje podatke i ne pravi rezervacije — služi kao UI prikaz.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 relative z-10">

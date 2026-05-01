@@ -9,11 +9,11 @@ export default function ClientPWA() {
           <div>
             <h1 className="text-xl font-heading">
               <span className="text-text-secondary text-sm block mb-1">Dobrodošli nazad,</span>
-              Nikola
+              Demo User
             </h1>
           </div>
           <div className="w-12 h-12 rounded-full overflow-hidden border border-surface-light bg-surface-dark flex items-center justify-center">
-            <span className="text-gold-500 font-bold">NS</span>
+            <span className="text-gold-500 font-bold">DU</span>
           </div>
         </div>
       </header>
@@ -34,10 +34,10 @@ export default function ClientPWA() {
             
             <h3 className="text-2xl font-heading mb-1">Petak, 24. Maj</h3>
             <p className="text-xl font-light mb-4">10:30h</p>
-            
+
             <div className="flex items-center gap-3 text-sm text-text-secondary border-t border-surface-light pt-4">
                <MapPin className="w-4 h-4 text-gold-500" />
-               <span>X STYLE Barber, Cara Dušana 12</span>
+               <span>VELDR Barber, Atelje 04 (placeholder)</span>
             </div>
           </div>
         </section>
@@ -74,7 +74,7 @@ export default function ClientPWA() {
                   </div>
                   <div className="text-left">
                     <p className="font-medium text-sm">Premium Haircut</p>
-                    <p className="text-xs text-text-secondary">Majstor: Miloš</p>
+                    <p className="text-xs text-text-secondary">Majstor: Andrej</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 text-gold-500">

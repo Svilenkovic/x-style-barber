@@ -1,11 +1,11 @@
 {
-  "name": "X Style Barber",
-  "short_name": "X Style",
-  "description": "Premium Barber and Grooming Experience",
+  "name": "VELDR Barber — Portfolio Demo",
+  "short_name": "VELDR",
+  "description": "Demonstracioni portfolio sajt — premium barber/grooming koncept (VELDR Barber).",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#050505",
-  "theme_color": "#050505",
+  "background_color": "#02040a",
+  "theme_color": "#02040a",
   "icons": [
     {
       "src": "/icon.png",

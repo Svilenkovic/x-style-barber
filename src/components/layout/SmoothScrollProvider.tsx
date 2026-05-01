@@ -9,6 +9,15 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SmoothScrollProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
+    const reduce = typeof window !== "undefined" && window.matchMedia
+      ? window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      : false;
+    if (reduce) {
+      // Native scroll without Lenis when user prefers reduced motion.
+      ScrollTrigger.refresh();
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -21,15 +30,15 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
 
     lenis.on('scroll', ScrollTrigger.update);
 
-    gsap.ticker.add((time) => {
+    const tickerCallback = (time: number) => {
       lenis.raf(time * 1000);
-    });
-
+    };
+    gsap.ticker.add(tickerCallback);
     gsap.ticker.lagSmoothing(0);
 
     return () => {
+      gsap.ticker.remove(tickerCallback);
       lenis.destroy();
-      gsap.ticker.remove(lenis.raf);
     };
   }, []);
 

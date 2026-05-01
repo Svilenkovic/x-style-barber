@@ -30,7 +30,7 @@ export default function Home() {
 
   useGSAP(
     () => {
-      // Sleek Split Text Entrance (Nacionale Style) for Hero Content
+      // Hero text reveal entrance
       gsap.fromTo(".hero-split", 
         { y: 60, opacity: 0, scale: 0.95 }, 
         { y: 0, opacity: 1, scale: 1, duration: 1.5, stagger: 0.1, ease: "power4.out", delay: 0.5 }
@@ -78,33 +78,40 @@ export default function Home() {
 
       {/* Header - Glassmorphism */}
       <header className="fixed top-0 w-full z-50 px-6 py-6 md:px-12 md:py-8 flex justify-between items-center bg-transparent mix-blend-difference">
-        <div className="font-heading text-2xl tracking-[0.2em] font-black uppercase">
-          <span className="text-white">X</span>
-          <span className="text-gold-500 ml-1">STYLE</span>
-        </div>
-        <nav className="hidden md:flex items-center gap-10 text-xs tracking-[0.2em] uppercase font-bold text-white">
+        <a href="#top" className="font-heading text-2xl tracking-[0.2em] font-black uppercase" aria-label="VELDR Barber — početna">
+          <span className="text-white">VELDR</span>
+          <span className="text-gold-500 ml-1">BARBER</span>
+        </a>
+        <nav className="hidden md:flex items-center gap-10 text-xs tracking-[0.2em] uppercase font-bold text-white" aria-label="Glavna navigacija">
           <a href="#about" className="hover:text-gold-500 transition-colors opacity-80 hover:opacity-100">O Nama</a>
           <a href="#services" className="hover:text-gold-500 transition-colors opacity-80 hover:opacity-100">Usluge</a>
           <a href="#booking" className="border border-white/20 px-6 py-3 hover:border-gold-500 hover:text-gold-500 transition-all rounded-full flex items-center gap-2 backdrop-blur-md bg-white/5">
-            ZAKAŽI <ArrowRight className="w-3 h-3" />
+            DEMO TERMIN <ArrowRight className="w-3 h-3" />
           </a>
         </nav>
       </header>
 
+      {/* PORTFOLIO DEMO BADGE */}
+      <div className="fixed top-3 left-1/2 -translate-x-1/2 z-[60] pointer-events-none">
+        <span className="inline-block text-[10px] tracking-[0.3em] uppercase font-bold text-gold-500 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-full border border-gold-500/30">
+          Portfolio · Demo
+        </span>
+      </div>
+
       {/* HERO SECTION */}
-      <section className="hero-section h-screen relative flex items-center justify-center pointer-events-none">
+      <section id="top" className="hero-section h-screen relative flex items-center justify-center pointer-events-none">
         <div className="text-center z-10 px-4 hero-title-group flex flex-col items-center">
-          <TextReveal 
-            text="SVET  LUXUZNOG  BARBERINGA" 
+          <TextReveal
+            text="SVET  LUKSUZNOG  BARBERINGA"
             className="hero-split text-gold-500 font-heading text-[10px] md:text-sm tracking-[0.5em] mb-8 font-bold"
             delay={0.2}
           />
           <h1 className="hero-split text-6xl md:text-8xl lg:text-[11rem] font-heading font-black leading-[0.85] tracking-tighter uppercase mb-4">
-            <span className="block text-white opacity-90 drop-shadow-2xl">X STYLE</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.4)" }}>NOVI SAD</span>
+            <span className="block text-white opacity-90 drop-shadow-2xl">VELDR</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.4)" }}>BARBER</span>
           </h1>
           <p className="hero-split text-text-secondary max-w-md mx-auto mt-6 text-sm font-light tracking-wide leading-relaxed px-4">
-            Gde klasika sreće inovaciju. Vaš lični pečat zahteva majstorski alat. Pređite na viši nivo.
+            Gde forma sreće preciznost. Demonstracioni portfolio koncept — premium grooming atelje, posvećen detalju i tišini.
           </p>
         </div>
       </section>
@@ -133,10 +140,10 @@ export default function Home() {
             </h2>
             <div className="space-y-6 text-text-secondary text-lg font-light leading-relaxed">
               <p>
-                X Style predstavlja potpunu posvećenost detaljima. Mi nismo ovde da bismo vas samo ošišali – mi dizajniramo vaš identitet kroz savršene siluete.
+                VELDR Barber je fictional koncept — posvećenost detaljima i ritualu. Ovaj sajt je dizajn-inženjering portfolio: ne radi se o stvarnom salonu, već o demonstraciji premium estetike, 3D animacije i scroll dinamike.
               </p>
               <p>
-                Svaki klijent je projekat bez kompromisa. Tradicionalne hot-towel tehnike uklapamo sa vrhunskim alatima od hladnog čelika. Prostor, akustika i atmosfera kreirani su isključivo da bi vaš um bio opušten, a vi apsolutno fokusirani na sebe.
+                Sve usluge, cene i termini prikazani su isključivo radi prikaza šablona. Ako vas zanima ovakav nivo izvedbe za vaš brend, kontakt je u podnožju strane.
               </p>
             </div>
           </div>
@@ -165,11 +172,11 @@ export default function Home() {
       </section>
 
       {/* MARQUEE */}
-      <div className="py-16 md:py-24 overflow-hidden whitespace-nowrap bg-transparent text-white mix-blend-difference font-heading relative z-10 uppercase text-6xl md:text-8xl font-black border-y border-white/10">
+      <div className="py-16 md:py-24 overflow-hidden whitespace-nowrap bg-transparent text-white mix-blend-difference font-heading relative z-10 uppercase text-6xl md:text-8xl font-black border-y border-white/10" aria-hidden="true">
         <div className="animate-marquee inline-block opacity-40 hover:opacity-100 transition-opacity duration-700">
-          <span className="mx-8">X STYLE EXCELLENCE</span>
+          <span className="mx-8">VELDR EXCELLENCE</span>
           <span className="mx-8 font-light italic text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,1)" }}>ROYAL SHAVE</span>
-          <span className="mx-8">X STYLE EXCELLENCE</span>
+          <span className="mx-8">VELDR EXCELLENCE</span>
           <span className="mx-8 font-light italic text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,1)" }}>ROYAL SHAVE</span>
         </div>
       </div>
@@ -185,54 +192,66 @@ export default function Home() {
       <section className="py-24 px-6 md:px-12 relative z-10">
         <div className="max-w-5xl mx-auto glass-card rounded-[2rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10 border border-gold-500/30">
           <div className="text-left">
-            <h3 className="text-3xl font-heading text-white uppercase tracking-wider mb-2">Instalirajte Našu Aplikaciju</h3>
-            <p className="text-text-secondary font-light">Ekskluzivni Loyalty programovi, brže zakazivanje i podsetnici – pravo na vašem telefonu.</p>
+            <h3 className="text-3xl font-heading text-white uppercase tracking-wider mb-2">PWA Demo Aplikacija</h3>
+            <p className="text-text-secondary font-light">Pogledajte kako bi izgledao klijent i admin dashboard u mobilnoj aplikaciji — UI demo, bez realnih podataka.</p>
           </div>
-          <button className="bg-white text-bg-dark font-heading px-8 py-4 font-bold rounded-full uppercase tracking-widest text-sm hover:scale-105 transition-transform flex-shrink-0">
-            PREUZMITE BESPLATNO
-          </button>
+          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+            <a href="/pwa/client" className="bg-white text-bg-dark font-heading px-6 py-4 font-bold rounded-full uppercase tracking-widest text-xs hover:scale-105 transition-transform text-center">
+              Klijent UI
+            </a>
+            <a href="/pwa/admin" className="border border-gold-500 text-gold-500 font-heading px-6 py-4 font-bold rounded-full uppercase tracking-widest text-xs hover:bg-gold-500 hover:text-bg-dark transition-all text-center">
+              Admin UI
+            </a>
+          </div>
         </div>
       </section>
 
       {/* FOOTER & CONTACT FORM */}
       <footer className="bg-black/80 py-24 px-6 md:px-12 relative z-10 border-t border-[var(--color-border-subtle)] backdrop-blur-3xl">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-16">
-          
+
           <div className="lg:col-span-1">
-            <div className="font-heading text-2xl tracking-[0.3em] font-black text-white mb-6 uppercase">X STYLE <span className="text-gold-500">BARBER</span></div>
-            <p className="text-text-secondary font-light text-sm leading-relaxed mb-6">Oficijalni Grooming Lounge u srcu Novog Sada. Izgledajte najbolje što možete svakoga dana.</p>
+            <div className="font-heading text-2xl tracking-[0.3em] font-black text-white mb-6 uppercase">VELDR <span className="text-gold-500">BARBER</span></div>
+            <p className="text-text-secondary font-light text-sm leading-relaxed mb-6">Demonstracioni portfolio sajt — fictional premium grooming atelje. Sve forme, cene i termini su prikaz šablona, bez stvarnih podataka.</p>
             <div className="text-sm font-light text-text-secondary space-y-2">
-              <p>Kontakt podaci se podešavaju prema vašoj implementaciji šablona.</p>
+              <p>Demo lokacija: Atelje 04 (placeholder)</p>
+              <p>Demo telefon: 06X XXX XXXX</p>
             </div>
           </div>
 
           <div className="lg:col-span-1">
-            <h4 className="text-gold-500 font-heading uppercase tracking-widest text-sm mb-6">Radno Vreme</h4>
+            <h4 className="text-gold-500 font-heading uppercase tracking-widest text-sm mb-6">Demo Radno Vreme</h4>
             <ul className="text-text-secondary font-light text-sm space-y-3">
               <li className="flex justify-between"><span>Pon - Pet:</span><span>09:00 - 20:00</span></li>
               <li className="flex justify-between"><span>Subota:</span><span>09:00 - 15:00</span></li>
               <li className="flex justify-between text-gold-500/50"><span>Nedelja:</span><span>Zatvoreno</span></li>
             </ul>
+            <h4 className="text-gold-500 font-heading uppercase tracking-widest text-sm mt-8 mb-4">Pravno</h4>
+            <ul className="text-text-secondary font-light text-sm space-y-2">
+              <li><a href="/privacy" className="hover:text-gold-500 transition-colors">Politika Privatnosti</a></li>
+              <li><a href="/terms" className="hover:text-gold-500 transition-colors">Uslovi Korišćenja</a></li>
+            </ul>
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-gold-500 font-heading uppercase tracking-widest text-sm mb-6">Kontakt Forma</h4>
-            <form className="space-y-4">
+            <h4 className="text-gold-500 font-heading uppercase tracking-widest text-sm mb-6">Demo Kontakt Forma</h4>
+            <p className="text-xs text-text-secondary mb-4 italic font-light">Forma ne šalje podatke — UI demo bez pozadinskog servisa.</p>
+            <form className="space-y-4" onSubmit={(e) => e.preventDefault()} aria-label="Demo kontakt forma">
               <div className="grid grid-cols-2 gap-4">
-                <input type="text" placeholder="Ime" className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white font-light text-sm focus:outline-none focus:border-gold-500/50" />
-                <input type="email" placeholder="Email" className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white font-light text-sm focus:outline-none focus:border-gold-500/50" />
+                <input type="text" placeholder="Ime" aria-label="Ime" className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white font-light text-sm focus:outline-none focus:border-gold-500/50 focus-visible:ring-2 focus-visible:ring-gold-500/40" />
+                <input type="email" placeholder="Email" aria-label="Email" className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white font-light text-sm focus:outline-none focus:border-gold-500/50 focus-visible:ring-2 focus-visible:ring-gold-500/40" />
               </div>
-              <textarea placeholder="Vaša poruka..." rows={3} className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white font-light text-sm focus:outline-none focus:border-gold-500/50"></textarea>
-              <button type="button" className="bg-gold-500 text-bg-dark font-heading uppercase text-xs font-bold tracking-widest px-8 py-3 rounded-lg hover:bg-gold-400 transition-colors">Pošalji Poruku</button>
+              <textarea placeholder="Vaša poruka..." aria-label="Poruka" rows={3} className="w-full bg-white/5 border border-white/10 p-3 rounded-lg text-white font-light text-sm focus:outline-none focus:border-gold-500/50 focus-visible:ring-2 focus-visible:ring-gold-500/40"></textarea>
+              <button type="submit" className="bg-gold-500 text-bg-dark font-heading uppercase text-xs font-bold tracking-widest px-8 py-3 rounded-lg hover:bg-gold-400 transition-colors focus-visible:ring-2 focus-visible:ring-gold-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark">Demo Poruka</button>
             </form>
           </div>
 
         </div>
-        
+
         <div className="max-w-7xl mx-auto pt-8 border-t border-white/10 text-center text-text-secondary text-xs uppercase tracking-widest font-light space-y-2">
-          <p>&copy; {new Date().getFullYear()} X Style Barber Novi Sad. Sva prava zadržana.</p>
+          <p>&copy; {new Date().getFullYear()} VELDR Barber — Portfolio Demo. Brend je fictional.</p>
           <p>
-            Template by <a href="https://svilenkovic.com" target="_blank" rel="noopener noreferrer" className="hover:text-gold-500 transition-colors">svilenkovic.com</a>
+            Dizajn i razvoj: <a href="https://svilenkovic.com" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:text-gold-400 transition-colors font-bold">svilenkovic.com</a>
           </p>
         </div>
       </footer>

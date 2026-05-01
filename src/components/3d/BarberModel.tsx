@@ -4,17 +4,28 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import { sceneScrollProxy } from '../../lib/scrollProxy';
 
-export default function BarberModel() {
+type Quality = "low" | "high";
+
+export default function BarberModel({ quality = "high" }: { quality?: Quality }) {
   const groupRef = useRef<THREE.Group>(null);
   const handleRef = useRef<THREE.Mesh>(null);
   const bladeRef = useRef<THREE.Mesh>(null);
+  const segs = quality === "low" ? 12 : 16;
+  const planeMaterial = quality === "low"
+    ? <meshStandardMaterial color="#c9a84c" metalness={0.7} roughness={0.4} side={THREE.DoubleSide} />
+    : <meshPhysicalMaterial color="#c9a84c" metalness={1.0} roughness={0.2} side={THREE.DoubleSide} />;
+  const bladeMaterial = quality === "low"
+    ? <meshStandardMaterial color="#eeeeee" metalness={0.85} roughness={0.2} />
+    : <meshPhysicalMaterial color="#eeeeee" roughness={0.05} metalness={1.0} clearcoat={1.0} envMapIntensity={2.0} />;
+  const handleMaterial = quality === "low"
+    ? <meshStandardMaterial color="#111111" metalness={0.2} roughness={0.7} />
+    : <meshPhysicalMaterial color="#111111" roughness={0.7} metalness={0.3} clearcoat={0.1} />;
 
   useFrame((state) => {
     if (!groupRef.current) return;
     const r1 = sceneScrollProxy.progress;
     const time = state.clock.elapsedTime;
 
-    // NACIONALE STYLE KINEMATICS
     // r1 goes from 0 to 1 (scroll progress)
     
     // Smooth left-to-right weaving path (3 full waves down the page)
@@ -56,46 +67,37 @@ export default function BarberModel() {
   return (
     <group ref={groupRef} scale={[0.8, 0.8, 0.8]}>
       
-      {/* PIVOT (Zlatni sraf / Gold screw connecting blade and handle) */}
-      <mesh position={[0, 1.5, 0]} castShadow>
-        <cylinderGeometry args={[0.08, 0.08, 0.3, 16]} />
-        <meshPhysicalMaterial color="#d4b65a" roughness={0.1} metalness={1.0} clearcoat={1.0} />
+      {/* PIVOT */}
+      <mesh position={[0, 1.5, 0]} castShadow={quality === "high"}>
+        <cylinderGeometry args={[0.08, 0.08, 0.3, segs]} />
+        {quality === "low"
+          ? <meshStandardMaterial color="#d4b65a" metalness={0.85} roughness={0.25} />
+          : <meshPhysicalMaterial color="#d4b65a" roughness={0.1} metalness={1.0} clearcoat={1.0} />}
       </mesh>
 
-      {/* DRŠKA (Handle) - Tamno mat / Obsidian crno */}
-      <mesh ref={handleRef} position={[0, -0.5, 0]} castShadow receiveShadow>
+      {/* DRŠKA */}
+      <mesh ref={handleRef} position={[0, -0.5, 0]} castShadow={quality === "high"} receiveShadow={quality === "high"}>
         <boxGeometry args={[0.3, 4, 0.1]} />
-        <meshPhysicalMaterial 
-          color="#111111" 
-          roughness={0.7} 
-          metalness={0.3} 
-          clearcoat={0.1} 
-        />
+        {handleMaterial}
       </mesh>
 
-      {/* DETALJ NA DRŠCI (Gold Handle Accent) */}
-      <mesh position={[0, -2.4, 0]} castShadow>
-         <cylinderGeometry args={[0.05, 0.15, 0.4, 16]} />
-         <meshPhysicalMaterial color="#c9a84c" roughness={0.2} metalness={0.9} />
+      {/* GOLD ACCENT */}
+      <mesh position={[0, -2.4, 0]} castShadow={quality === "high"}>
+         <cylinderGeometry args={[0.05, 0.15, 0.4, segs]} />
+         {quality === "low"
+           ? <meshStandardMaterial color="#c9a84c" metalness={0.85} roughness={0.3} />
+           : <meshPhysicalMaterial color="#c9a84c" roughness={0.2} metalness={0.9} />}
       </mesh>
 
-      {/* OŠTRICA (Blade) - Srebrni polirani čelik / Silver Polished Steel */}
+      {/* OŠTRICA */}
       <group position={[0, 1.5, 0.08]} ref={bladeRef}>
-        <mesh position={[-0.4, -1.2, 0]} castShadow receiveShadow>
-            {/* Box used for blade, shifted so pivot point is at the top corner */}
+        <mesh position={[-0.4, -1.2, 0]} castShadow={quality === "high"} receiveShadow={quality === "high"}>
             <boxGeometry args={[0.8, 3, 0.02]} />
-            <meshPhysicalMaterial 
-               color="#eeeeee" 
-               roughness={0.05} 
-               metalness={1.0} 
-               clearcoat={1.0}
-               envMapIntensity={2.0}
-            />
+            {bladeMaterial}
         </mesh>
-        {/* Zlatni gravirani logo / detalj na oštrici */}
         <mesh position={[-0.4, -0.5, 0.015]}>
             <planeGeometry args={[0.5, 0.5]} />
-            <meshPhysicalMaterial color="#c9a84c" metalness={1.0} roughness={0.2} side={THREE.DoubleSide} />
+            {planeMaterial}
         </mesh>
       </group>
 

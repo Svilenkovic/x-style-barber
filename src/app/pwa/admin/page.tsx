@@ -2,11 +2,11 @@ import { Calendar, User, Clock, Scissors, MoreHorizontal, Home, TrendingUp, Sett
 
 export default function AdminPWA() {
   const appointments = [
-    { time: "09:00", name: "Marko Ristić", service: "Hair & Beard Combo", status: "completed" },
-    { time: "10:30", name: "Nikola Savić", service: "Premium Haircut", status: "in-progress" },
-    { time: "11:30", name: "Stefan Ilić", service: "Beard Trim", status: "upcoming" },
-    { time: "13:00", name: "Petar Jovanović", service: "Royal Shave", status: "upcoming" },
-    { time: "14:00", name: "Luka Kostić", service: "Premium Haircut", status: "upcoming" },
+    { time: "09:00", name: "Klijent A", service: "Hair & Beard Combo", status: "completed" },
+    { time: "10:30", name: "Klijent B", service: "Premium Haircut", status: "in-progress" },
+    { time: "11:30", name: "Klijent C", service: "Beard Trim", status: "upcoming" },
+    { time: "13:00", name: "Klijent D", service: "Royal Shave", status: "upcoming" },
+    { time: "14:00", name: "Klijent E", service: "Premium Haircut", status: "upcoming" },
   ];
 
   return (
@@ -16,7 +16,7 @@ export default function AdminPWA() {
         <div className="flex justify-between items-center mb-4">
           <div>
             <p className="text-text-secondary text-sm">Dobro jutro,</p>
-            <h1 className="text-2xl font-heading font-bold">X STYLE Admin</h1>
+            <h1 className="text-2xl font-heading font-bold">VELDR Admin <span className="text-gold-500 text-xs ml-1">DEMO</span></h1>
           </div>
           <div className="w-12 h-12 bg-surface-light rounded-full flex items-center justify-center overflow-hidden border border-gold-500">
             <User className="text-gold-500" />
