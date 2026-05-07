@@ -11,15 +11,9 @@ export default function BarberModel({ quality = "high" }: { quality?: Quality })
   const handleRef = useRef<THREE.Mesh>(null);
   const bladeRef = useRef<THREE.Mesh>(null);
   const segs = quality === "low" ? 12 : 16;
-  const planeMaterial = quality === "low"
-    ? <meshStandardMaterial color="#c9a84c" metalness={0.7} roughness={0.4} side={THREE.DoubleSide} />
-    : <meshPhysicalMaterial color="#c9a84c" metalness={1.0} roughness={0.2} side={THREE.DoubleSide} />;
-  const bladeMaterial = quality === "low"
-    ? <meshStandardMaterial color="#eeeeee" metalness={0.85} roughness={0.2} />
-    : <meshPhysicalMaterial color="#eeeeee" roughness={0.05} metalness={1.0} clearcoat={1.0} envMapIntensity={2.0} />;
-  const handleMaterial = quality === "low"
-    ? <meshStandardMaterial color="#111111" metalness={0.2} roughness={0.7} />
-    : <meshPhysicalMaterial color="#111111" roughness={0.7} metalness={0.3} clearcoat={0.1} />;
+  const planeMaterial = <meshStandardMaterial color="#c9a84c" metalness={0.7} roughness={0.4} side={THREE.DoubleSide} />;
+  const bladeMaterial = <meshStandardMaterial color="#eeeeee" metalness={0.85} roughness={0.2} />;
+  const handleMaterial = <meshStandardMaterial color="#111111" metalness={0.2} roughness={0.7} />;
 
   useFrame((state) => {
     if (!groupRef.current) return;
@@ -68,30 +62,26 @@ export default function BarberModel({ quality = "high" }: { quality?: Quality })
     <group ref={groupRef} scale={[0.8, 0.8, 0.8]}>
       
       {/* PIVOT */}
-      <mesh position={[0, 1.5, 0]} castShadow={quality === "high"}>
+      <mesh position={[0, 1.5, 0]}>
         <cylinderGeometry args={[0.08, 0.08, 0.3, segs]} />
-        {quality === "low"
-          ? <meshStandardMaterial color="#d4b65a" metalness={0.85} roughness={0.25} />
-          : <meshPhysicalMaterial color="#d4b65a" roughness={0.1} metalness={1.0} clearcoat={1.0} />}
+        <meshStandardMaterial color="#d4b65a" metalness={0.85} roughness={0.25} />
       </mesh>
 
       {/* DRŠKA */}
-      <mesh ref={handleRef} position={[0, -0.5, 0]} castShadow={quality === "high"} receiveShadow={quality === "high"}>
+      <mesh ref={handleRef} position={[0, -0.5, 0]}>
         <boxGeometry args={[0.3, 4, 0.1]} />
         {handleMaterial}
       </mesh>
 
       {/* GOLD ACCENT */}
-      <mesh position={[0, -2.4, 0]} castShadow={quality === "high"}>
+      <mesh position={[0, -2.4, 0]}>
          <cylinderGeometry args={[0.05, 0.15, 0.4, segs]} />
-         {quality === "low"
-           ? <meshStandardMaterial color="#c9a84c" metalness={0.85} roughness={0.3} />
-           : <meshPhysicalMaterial color="#c9a84c" roughness={0.2} metalness={0.9} />}
+         <meshStandardMaterial color="#c9a84c" metalness={0.85} roughness={0.3} />
       </mesh>
 
       {/* OŠTRICA */}
       <group position={[0, 1.5, 0.08]} ref={bladeRef}>
-        <mesh position={[-0.4, -1.2, 0]} castShadow={quality === "high"} receiveShadow={quality === "high"}>
+        <mesh position={[-0.4, -1.2, 0]}>
             <boxGeometry args={[0.8, 3, 0.02]} />
             {bladeMaterial}
         </mesh>

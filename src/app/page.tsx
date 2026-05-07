@@ -78,7 +78,7 @@ export default function Home() {
 
       {/* Header - Glassmorphism */}
       <header className="fixed top-0 w-full z-50 px-6 py-6 md:px-12 md:py-8 flex justify-between items-center bg-transparent mix-blend-difference">
-        <a href="#top" className="font-heading text-2xl tracking-[0.2em] font-black uppercase" aria-label="VELDR Barber — početna">
+        <a href="#top" className="font-heading text-2xl tracking-[0.2em] font-black uppercase">
           <span className="text-white">VELDR</span>
           <span className="text-gold-500 ml-1">BARBER</span>
         </a>
@@ -175,15 +175,11 @@ export default function Home() {
       <div className="py-16 md:py-24 overflow-hidden whitespace-nowrap bg-transparent text-white mix-blend-difference font-heading relative z-10 uppercase text-6xl md:text-8xl font-black border-y border-white/10" aria-hidden="true">
         <div className="animate-marquee inline-block opacity-40 hover:opacity-100 transition-opacity duration-700">
           <span className="mx-8">VELDR EXCELLENCE</span>
-          <span className="mx-8 font-light italic text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,1)" }}>ROYAL SHAVE</span>
+          <span className="mx-8 font-light italic text-transparent stroke-white-thin">ROYAL SHAVE</span>
           <span className="mx-8">VELDR EXCELLENCE</span>
-          <span className="mx-8 font-light italic text-transparent" style={{ WebkitTextStroke: "1px rgba(255,255,255,1)" }}>ROYAL SHAVE</span>
+          <span className="mx-8 font-light italic text-transparent stroke-white-thin">ROYAL SHAVE</span>
         </div>
       </div>
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { animation: marquee 30s linear infinite; }
-      `}} />
 
       {/* BOOKING SECTION */}
       <BookingSection />
@@ -228,8 +224,8 @@ export default function Home() {
             </ul>
             <h4 className="text-gold-500 font-heading uppercase tracking-widest text-sm mt-8 mb-4">Pravno</h4>
             <ul className="text-text-secondary font-light text-sm space-y-2">
-              <li><a href="/privacy" className="hover:text-gold-500 transition-colors">Politika Privatnosti</a></li>
-              <li><a href="/terms" className="hover:text-gold-500 transition-colors">Uslovi Korišćenja</a></li>
+              <li><a href="/privacy" className="hover:text-gold-500 transition-colors inline-flex items-center min-h-[44px] py-2">Politika Privatnosti</a></li>
+              <li><a href="/terms" className="hover:text-gold-500 transition-colors inline-flex items-center min-h-[44px] py-2">Uslovi Korišćenja</a></li>
             </ul>
           </div>
 
@@ -249,7 +245,7 @@ export default function Home() {
         </div>
 
         <div className="max-w-7xl mx-auto pt-8 border-t border-white/10 text-center text-text-secondary text-xs uppercase tracking-widest font-light space-y-2">
-          <p>&copy; {new Date().getFullYear()} VELDR Barber — Portfolio Demo. Brend je fictional.</p>
+          <p>&copy; 2026 VELDR Barber — Portfolio Demo. Brend je fictional.</p>
           <p>
             Dizajn i razvoj: <a href="https://svilenkovic.com" target="_blank" rel="noopener noreferrer" className="text-gold-500 hover:text-gold-400 transition-colors font-bold">svilenkovic.com</a>
           </p>

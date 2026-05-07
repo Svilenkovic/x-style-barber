@@ -96,3 +96,44 @@
     min-height: 44px;
   }
 }
+
+/* Marquee animation (moved out of inline <style> to satisfy W3C HTML5) */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Outline-style text used in the marquee — replaces inline WebkitTextStroke */
+.stroke-white-thin {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 1);
+}
+
+/* DayPicker (react-day-picker v9) themed for VELDR */
+.rdp-veldr {
+  --rdp-cell-size: 38px;
+  --rdp-accent-color: var(--color-gold-500);
+  margin: 0;
+  font-family: var(--font-sans);
+}
+.rdp-veldr .rdp-day_selected,
+.rdp-veldr .rdp-day_selected:focus-visible,
+.rdp-veldr .rdp-day_selected:hover {
+  background-color: var(--color-gold-500) !important;
+  color: var(--color-bg-dark) !important;
+  font-weight: bold;
+  border-radius: 50%;
+}
+.rdp-veldr .rdp-button:hover:not([disabled]):not(.rdp-day_selected) {
+  background-color: rgba(201, 168, 76, 0.1);
+  border-radius: 50%;
+}
+.rdp-veldr .rdp-head_cell {
+  font-family: var(--font-heading);
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}

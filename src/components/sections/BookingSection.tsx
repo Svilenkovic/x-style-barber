@@ -1,10 +1,15 @@
 "use client";
 
 import { useState } from "react";
+import dynamic from "next/dynamic";
 import { format } from "date-fns";
-import { Clock, Scissors, CheckCircle } from "lucide-react";
-import { DayPicker } from "react-day-picker";
+import { Scissors, CheckCircle } from "lucide-react";
 import "react-day-picker/dist/style.css";
+
+const DayPicker = dynamic(
+  () => import("react-day-picker").then((m) => m.DayPicker),
+  { ssr: false, loading: () => <div className="h-[280px] flex items-center justify-center text-text-secondary text-xs uppercase tracking-widest">Učitavanje kalendara…</div> },
+);
 
 const services = [
   { id: "haircut", name: "Premium Classic Haircut", price: "1500 RSD", duration: "45 MIN" },
@@ -62,21 +67,23 @@ export default function BookingSection() {
             </h3>
             <div className="flex flex-col gap-3">
               {services.map((service) => (
-                <button 
-                  key={service.id} 
-                  onClick={() => setSelectedService(service.id)} 
-                  className={`text-left p-5 transition-all duration-500 rounded-xl border ${
-                    selectedService === service.id 
-                      ? "border-gold-500 bg-[rgba(201,168,76,0.08)] shadow-[0_0_20px_rgba(201,168,76,0.1)]" 
+                <button
+                  key={service.id}
+                  type="button"
+                  onClick={() => setSelectedService(service.id)}
+                  aria-pressed={selectedService === service.id}
+                  className={`text-left p-5 transition-all duration-500 rounded-xl border block w-full ${
+                    selectedService === service.id
+                      ? "border-gold-500 bg-[rgba(201,168,76,0.08)] shadow-[0_0_20px_rgba(201,168,76,0.1)]"
                       : "border-surface-light hover:border-text-secondary/30 bg-black/20"
                   }`}
                 >
-                  <div className="flex justify-between items-center mb-2">
+                  <span className="flex justify-between items-center mb-2">
                     <span className="font-heading tracking-wide uppercase text-sm">{service.name}</span>
                     <span className="text-gold-500 font-heading text-sm">{service.price}</span>
-                  </div>
+                  </span>
                   <span className="text-xs text-text-secondary flex items-center gap-1.5 uppercase tracking-wider font-light">
-                    <Scissors className="w-3 h-3 opacity-60" /> {service.duration}
+                    <Scissors className="w-3 h-3 opacity-60" aria-hidden="true" /> {service.duration}
                   </span>
                 </button>
               ))}
@@ -89,29 +96,26 @@ export default function BookingSection() {
               <span className="w-6 h-[1px] bg-gold-500 inline-block"></span> VREME
             </h3>
             <div className="bg-black/30 border border-surface-light rounded-xl p-6">
-              <style dangerouslySetInnerHTML={{__html: `
-                .rdp { --rdp-cell-size: 38px; --rdp-accent-color: var(--color-gold-500); margin: 0; font-family: var(--font-inter); }
-                .rdp-day_selected, .rdp-day_selected:focus-visible, .rdp-day_selected:hover { background-color: var(--color-gold-500) !important; color: var(--color-bg-dark) !important; font-weight: bold; border-radius: 50%; }
-                .rdp-button:hover:not([disabled]):not(.rdp-day_selected) { background-color: rgba(201,168,76,0.1); border-radius: 50%; }
-                .rdp-head_cell { font-family: var(--font-heading); color: var(--color-text-secondary); font-size: 0.75rem; font-weight: 500; text-transform: uppercase; }
-              `}} />
-              <DayPicker 
-                mode="single" 
-                selected={selectedDate} 
-                onSelect={setSelectedDate} 
-                className="mx-auto flex justify-center mb-6" 
-                disabled={{ before: new Date() }} 
+              <DayPicker
+                mode="single"
+                selected={selectedDate}
+                onSelect={setSelectedDate}
+                className="rdp-veldr mx-auto flex justify-center mb-6"
+                disabled={{ before: new Date() }}
                 showOutsideDays={false}
               />
               <div className="mt-6 pt-6 border-t border-surface-light/50">
                 <div className="grid grid-cols-4 gap-2">
-                  {timeSlots.map(time => (
-                    <button 
-                      key={time} 
-                      onClick={() => setSelectedTime(time)} 
-                      className={`py-2 text-xs transition-all duration-300 rounded-md border text-center font-heading tracking-widest ${
-                        selectedTime === time 
-                          ? "bg-gold-500 text-bg-dark border-gold-500 font-bold" 
+                  {timeSlots.map((time) => (
+                    <button
+                      key={time}
+                      type="button"
+                      onClick={() => setSelectedTime(time)}
+                      aria-pressed={selectedTime === time}
+                      aria-label={`Termin u ${time}`}
+                      className={`min-h-[44px] py-3 text-xs transition-all duration-300 rounded-md border text-center font-heading tracking-widest ${
+                        selectedTime === time
+                          ? "bg-gold-500 text-bg-dark border-gold-500 font-bold"
                           : "border-surface-light text-text-secondary hover:border-gold-500/50 hover:text-white"
                       }`}
                     >
